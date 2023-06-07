@@ -23,71 +23,17 @@ export default function App() {
           <thead>
             <tr>
               <td></td>
-            {months.map(item => {
+            {months.map((item, index) => {
               return(
-                <td colspan="6">{item}</td>
+                <td colSpan="4" key={index}>{item}</td>
               )
             })}
             </tr>
           </thead>
           <tbody>
-            <tr>
-            <td className="contribution-graph">Пн</td>
-            {mondays.map(item => {
-              return(
-                <td></td>
-              )
-            })}
-            </tr>
-            <tr>
-              <td className="contribution-graph"></td>
-            {mondays.map(item => {
-              return(
-                <td className="contribution-day" style={{width: '12px'}}></td>
-              )
-            })}
-            </tr>
-            <tr>
-              <td className="contribution-graph" style={{width: '12px'}}>Ср</td>
-            {mondays.map(item => {
-              return(
-                <td></td>
-              )
-            })}
-            </tr>
-            <tr>
-              <td className="contribution-graph" style={{width: '12px'}}></td>
-            {mondays.map(item => {
-              return(
-                <td></td>
-              )
-            })}
-            </tr>
-            <tr>
-              <td className="contribution-graph" style={{width: '12px'}}>Пт</td>
-            {mondays.map(item => {
-              return(
-                <td></td>
-              )
-            })}
-            </tr>
-            <tr>
-              <td className="contribution-graph" style={{width: '12px'}}></td>
-            {mondays.map(item => {
-              return(
-                <td></td>
-              )
-            })}
-            </tr>
-            
-            <tr>
-              <td className="contribution-graph" style={{width: '12px'}}></td>
-            {mondays.map(item => {
-              return(
-                <td></td>
-              )
-            })}
-            </tr>
+          {dayOfWeek.map(weekDay => {
+            <ContributionTableRow dayOfWeek={weekDay} />
+          })}
           </tbody>
         </table>
       </div>

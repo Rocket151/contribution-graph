@@ -12,3 +12,5 @@ export const Months = {
   10: 'Нояб.',
   11: 'Дек.',
 }
+
+export const dayOfWeek = ['Пн','', 'Ср','', 'Пт','', '']
