@@ -3,7 +3,13 @@ import "./styles.css";
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
+      <div class="contribution-graph">
+        <table>
+          <thead>
+            
+          </thead>
+        </table>
+      </div>
     </div>
   );
 }
