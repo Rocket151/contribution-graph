@@ -1,12 +1,20 @@
+import { eachDayOfInterval, isMonday, getMonth } from "date-fns";
 import { Months } from "./const";
 import "./styles.css";
+import { getFirstDay, getLastDay } from "./utils";
 
 export default function App() {
-  const lastDate = '';
-  const firstDate = '';
   const currentDate = new Date();
+  const lastDate = getLastDay(currentDate);
+  const firstDate = getFirstDay(currentDate);
+  const contributionDays = eachDayOfInterval({
+  start: firstDate,
+  end: lastDate
+})
   
-  
+  const mondays = contributionDays.filter(date => isMonday(date));
+  const monthsNumbers = new Set([...mondays.map(date => getMonth(date))]);
+  const months = mont
   return (
     <div className="App">
       <div class="contribution-graph">
@@ -14,7 +22,7 @@ export default function App() {
           <thead>
             <tr>
               <td></td>
-            {Months.map(item => {
+            {months.map(item => {
               return(
                 <td>{item}</td>
               )

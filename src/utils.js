@@ -1,3 +1,5 @@
+import { addDays, isFriday, isMonday, isSaturday, isSunday, isThursday, isTuesday, isWednesday, subDays, subWeeks } from "date-fns"
+
 export function  getLastDay(date) {
     if(isMonday(date)) {
       return addDays(date, 6)
@@ -20,17 +22,24 @@ export function  getFirstDay(date) {
     if(isMonday(date)) {
       return subWeeks(date, 51);
     } else if (isTuesday(date)) {
-      return subWeeks(subDays(date, 1), 51);
+      return subWeeks(subDays(date, 1), 50);
     } else if (isWednesday(date)) {
-      return subWeeks(subDays(date, 2), 51);
+      return subWeeks(subDays(date, 2), 50);
     } else if (isThursday(date)) {
-      return subWeeks(subDays(date, 3), 51);
+      return subWeeks(subDays(date, 3), 50);
     } else if (isFriday(date)) {
-      return subWeeks(subDays(date, 4), 51);
+      return subWeeks(subDays(date, 4), 50);
     } else if (isSaturday(date)) {
-      return subWeeks(subDays(date, 5), 51);
+      return subWeeks(subDays(date, 5), 50);
     } else if (isSunday(date)) {
-      return subWeeks(subDays(date, 6), 51);
+      return subWeeks(subDays(date, 6), 50);
     }
 }
 
+export function getMonths(arr) {
+  const months = [];
+  for(let num of arr) {
+    months.push(Months[num]);
+  }
+  return months
+}
