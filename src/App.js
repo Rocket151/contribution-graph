@@ -1,7 +1,7 @@
-import { eachDayOfInterval, isMonday, getMonth } from "date-fns";
+import { eachDayOfInterval, isMonday, getMonth, lightFormat, parseISO } from "date-fns";
 import { Months } from "./const";
 import "./styles.css";
-import { getFirstDay, getLastDay } from "./utils";
+import { getFirstDay, getLastDay, getMonths } from "./utils";
 
 export default function App() {
   const currentDate = new Date();
@@ -12,67 +12,68 @@ export default function App() {
   end: lastDate
 })
   
-  const mondays = contributionDays.filter(date => isMonday(date));
-  const monthsNumbers = new Set([...mondays.map(date => getMonth(date))]);
-  const months = mont
+  const mondays = contributionDays.filter(date => isMonday(date)).map(item => lightFormat(item, 'yyyy-MM-dd'));
+  const monthsNumbers = new Set([...mondays.map(date => getMonth(parseISO(date)))]);
+  const months = getMonths(monthsNumbers);
+  console.log(mondays);
   return (
     <div className="App">
-      <div class="contribution-graph">
+      <div className="contribution-graph">
         <table>
           <thead>
             <tr>
               <td></td>
             {months.map(item => {
               return(
-                <td>{item}</td>
+                <td colspan="6">{item}</td>
               )
             })}
             </tr>
           </thead>
           <tbody>
             <tr>
-            <td class="contribution-graph">Пн</td>
-            {Months.map(item => {
+            <td className="contribution-graph">Пн</td>
+            {mondays.map(item => {
               return(
                 <td></td>
               )
             })}
             </tr>
             <tr>
-              <td class="contribution-graph"></td>
-            {Months.map(item => {
+              <td className="contribution-graph"></td>
+            {mondays.map(item => {
+              return(
+                <td className="contribution-day" style={{width: '12px'}}></td>
+              )
+            })}
+            </tr>
+            <tr>
+              <td className="contribution-graph" style={{width: '12px'}}>Ср</td>
+            {mondays.map(item => {
               return(
                 <td></td>
               )
             })}
             </tr>
             <tr>
-              <td class="contribution-graph">Ср</td>
-            {Months.map(item => {
+              <td className="contribution-graph" style={{width: '12px'}}></td>
+            {mondays.map(item => {
               return(
                 <td></td>
               )
             })}
             </tr>
             <tr>
-              <td class="contribution-graph"></td>
-            {Months.map(item => {
+              <td className="contribution-graph" style={{width: '12px'}}>Пт</td>
+            {mondays.map(item => {
               return(
                 <td></td>
               )
             })}
             </tr>
             <tr>
-              <td class="contribution-graph">Пт</td>
-            {Months.map(item => {
-              return(
-                <td></td>
-              )
-            })}
-            </tr>
-            <tr>
-              <td class="contribution-graph"></td>
-            {Months.map(item => {
+              <td className="contribution-graph" style={{width: '12px'}}></td>
+            {mondays.map(item => {
               return(
                 <td></td>
               )
@@ -80,8 +81,8 @@ export default function App() {
             </tr>
             
             <tr>
-              <td class="contribution-graph"></td>
-            {Months.map(item => {
+              <td className="contribution-graph" style={{width: '12px'}}></td>
+            {mondays.map(item => {
               return(
                 <td></td>
               )

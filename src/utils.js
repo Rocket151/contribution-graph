@@ -1,4 +1,5 @@
 import { addDays, isFriday, isMonday, isSaturday, isSunday, isThursday, isTuesday, isWednesday, subDays, subWeeks } from "date-fns"
+import { Months } from "./const"
 
 export function  getLastDay(date) {
     if(isMonday(date)) {
@@ -38,8 +39,8 @@ export function  getFirstDay(date) {
 
 export function getMonths(arr) {
   const months = [];
-  for(let num of arr) {
+  arr.forEach(num => {
     months.push(Months[num]);
-  }
+  })
   return months
 }
